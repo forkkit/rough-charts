@@ -8,12 +8,15 @@ import { isNil } from '../utils'
 
 const { Provider } = ChartContext
 const defaultMargin = {
-  top: 10, right: 10, bottom: 70, left: 60,
+  top: 10, right: 10, bottom: 50, left: 50,
 }
 
 export interface ChartProviderProps extends ChartContextArgument {
 }
 
+/**
+ * The `ChartProvider` is a root component for other components.
+ */
 export const ChartProvider: React.FC<ChartProviderProps> = (props) => {
   const [innerHeight, setInnerHeight] = React.useState(0)
   const [innerWidth, setInnerWidth] = React.useState(0)
@@ -24,6 +27,7 @@ export const ChartProvider: React.FC<ChartProviderProps> = (props) => {
     barDataKeys: [],
     lineDataKeys: [],
     circleDataKeys: [],
+    areaDataKeys: [],
     xScale: props.xScale || internalXScale,
     yScale: props.yScale || internalYScale,
     userXScale: props.xScale,
@@ -32,7 +36,6 @@ export const ChartProvider: React.FC<ChartProviderProps> = (props) => {
     internalYScale,
   })
   const [tooltipData, setTooltipData] = React.useState<TooltipData>({
-    hasToolTip: false,
     x: -1,
     y: -1,
     showToolTip: false,

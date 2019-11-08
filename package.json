@@ -8,11 +8,16 @@
     "packages/*"
   ],
   "scripts": {
-    "release": "lerna run build && lerna publish",
-    "deploy-storybook": "lerna run build && lerna run deploy-storybook"
+    "watch": "lerna run --parallel watch",
+    "start": "lerna run --parallel storybook",
+    "build": "lerna run build",
+    "release": "yarn build && lerna publish",
+    "build-storybook": "lerna run build-storybook",
+    "deploy-storybook": "lerna run deploy-storybook"
   },
   "devDependencies": {
     "@storybook/cli": "^5.2.3",
+    "@types/node": "^12.11.1",
     "commitizen": "^4.0.3",
     "cz-conventional-changelog": "3.0.2",
     "eslint": "^6.5.1",
